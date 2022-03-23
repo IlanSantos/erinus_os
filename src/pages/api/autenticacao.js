@@ -28,8 +28,8 @@ handler.post(async (req, res) => {
     if (match_password){
         const token = CreateToken({...query_find_operator.dataValues, senha: undefined})
         const create_session = await Sessao.create({cd_usuario: query_find_operator.codigo, token: token}, {returning: true})
-        setCookies("erinus-S_ID", create_session.codigo, {req, res, httpOnly: true})
-        setCookies('erinus-S_TOKEN', token, {req, res, httpOnly: true})
+        setCookies("erinus-S_ID", create_session.codigo, {req, res})
+        setCookies('erinus-S_TOKEN', token, {req, res})
         res.status(201).json({mensagem: "Encontrado", usuario: {...query_find_operator.dataValues, senha: undefined}, token: token})
     }else{
         res.status(200).json({mensagem: "Usuário ou senha incorretos", erro: true})

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import api from '../services/api'
 import { useToast } from '@chakra-ui/react'
 import { GlobalContext } from './GlobalContext'
+import Cookies from 'js-cookie'
 
 export const AuthContext = createContext({})
 
@@ -40,13 +41,21 @@ export const AuthProvider = ({children}) => {
     }
     const handleSessionRequest = async () => {
         try{
-            const request = await api.get("/autenticacao")
-            if(request.data.erro){
-                throw request.data.mensagem
+            if(!Cookies.get('erinus-S_TOKEN') && !Cookies.get('erinus-S_ID') && router.pathname !== "/login"){
+                throw "Usuário não autenticado"
             }
-            setUser(request.data.usuario)
-            setLogged(true)
-            router.push("/")
+            else if(Cookies.get('erinus-S_TOKEN') && Cookies.get('erinus-S_ID') && router.pathname !== "/login"){
+                const request = await api.get("/autenticacao")
+                if(request.data.erro){
+                    throw request.data.mensagem
+                }
+                setUser(request.data.usuario)
+                setLogged(true)
+                router.push("/")
+            }
+            else{
+                router.push("/login")
+            }
         }catch(error){
             if(router.pathname !== "/login"){
                 toast({

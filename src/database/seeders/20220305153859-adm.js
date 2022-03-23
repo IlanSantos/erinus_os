@@ -1,9 +1,10 @@
 'use strict';
-import {hash} from 'bcrypt'
+const bcrypt = require("bcrypt")
 
 module.exports = {
   async up (queryInterface) {
-    const encrypted_password = await hash("administrador", 14)
+    const encrypted_password = await bcrypt.hash("administrador", 14)
+
     await queryInterface.bulkInsert('tb_operador', [
       {
         nome: "administrador",
@@ -17,7 +18,8 @@ module.exports = {
     ])
   },
 
-  async down (queryInterface) {
-    await queryInterface.bulkDelete('tb_operador', {usuario: "administrador"}, {})
+  async down (queryInterface, Sequelize) {
+    const Op = Sequelize.Op
+    await queryInterface.bulkDelete('tb_operador', {[Op.eq]: [{usuario: "administrador"}]})
   }
 };
