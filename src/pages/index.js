@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Container, Text, Wrap } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, Wrap } from '@chakra-ui/react'
 import Head from 'next/head'
 import Card from '../components/Card'
 import { AuthContext } from '../context/AuthContext'
@@ -21,8 +21,23 @@ export default function Home() {
             <main>
                 <Container marginTop="7" maxW="container.xl">
                     <Wrap>
-                        <Card title="Solicitações abertas" description="Solicitações abertas pendentes" redirectTo={"/solicitacao/aberto"}/>
-                        <Card title="Ordem de serviço" description="Nova ordem de serviço" redirectTo={"/solicitacao/novo"}/>
+                        <Box w={["100%", "48.5%", "33%", "25%"]}>
+                            <Card title="Solicitações abertas" description="Solicitações abertas pendentes" redirectTo={"/solicitacao/aberto"}/>
+                        </Box>
+                        <Box w={["100%", "48.5%", "33%", "25%"]}>
+                            <Card title="Ordem de serviço" description="Nova ordem de serviço" redirectTo={"/solicitacao/novo"}/>
+                        </Box>
+                    </Wrap>
+                </Container>
+                <Container as="section" marginTop="7" maxW="container.xl">
+                    <Heading size="lg" color="#00135b">Clientes</Heading>
+                    <Wrap marginTop="3">
+                        <Box w={["100%", "48.5%", "33%", "25%"]}>
+                            <Card title="Busca de clientes" description="Realizar a busca de um novo cliente." />
+                        </Box>
+                        <Box w={["100%", "48.5%", "33%", "25%"]}>
+                            <Card title="Cadastro de clientes" description="Cadastro de um novo cliente" width="lg" />
+                        </Box>
                     </Wrap>
                 </Container>
             </main>

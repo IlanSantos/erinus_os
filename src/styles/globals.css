@@ -28,3 +28,8 @@ a {
 label{
   font-size: 16pt !important;
 }
+
+.responsive-cards{
+  height: 100% !important;
+}
+

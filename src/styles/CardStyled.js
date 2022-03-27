@@ -4,8 +4,9 @@ export const CardMain = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 300px;
-    height: 150px;
+    width: 100%;
+    max-width: 466px;
+    min-height: 100%;
     padding: .75rem;
     border-radius: .5rem;
     background-color: white;

@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) => {
         }catch(error){
             toast({
                 title: 'Erro!',
-                description: error,
+                description: error.response ? error.response.data.mensagem : error.toString(),
                 status: 'error',
                 duration: 3500,
                 isClosable: true,
