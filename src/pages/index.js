@@ -20,7 +20,8 @@ export default function Home() {
             </header>
             <main>
                 <Container marginTop="7" maxW="container.xl">
-                    <Wrap>
+                    <Heading fontSize="24pt" fontFamily="Mohave" color="#00135b">Ordens de serviço</Heading>
+                    <Wrap marginTop={3}>
                         <Box w={["100%", "48.5%", "33%", "25%"]}>
                             <Card title="Solicitações abertas" description="Solicitações abertas pendentes" redirectTo={"/solicitacao/aberto"}/>
                         </Box>
@@ -30,13 +31,13 @@ export default function Home() {
                     </Wrap>
                 </Container>
                 <Container as="section" marginTop="7" maxW="container.xl">
-                    <Heading size="lg" color="#00135b">Clientes</Heading>
+                    <Heading fontSize="24pt" fontFamily="Mohave" color="#00135b">Clientes</Heading>
                     <Wrap marginTop="3">
                         <Box w={["100%", "48.5%", "33%", "25%"]}>
-                            <Card title="Busca de clientes" description="Realizar a busca de um novo cliente." />
+                            <Card title="Busca de clientes" description="Realizar a busca de um novo cliente." redirectTo="/clientes/busca" />
                         </Box>
                         <Box w={["100%", "48.5%", "33%", "25%"]}>
-                            <Card title="Cadastro de clientes" description="Cadastro de um novo cliente" width="lg" />
+                            <Card title="Cadastro de clientes" description="Cadastro de um novo cliente" redirectTo={"/clientes/novo"} width="lg" />
                         </Box>
                     </Wrap>
                 </Container>

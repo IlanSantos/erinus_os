@@ -51,7 +51,6 @@ export const AuthProvider = ({children}) => {
                 }
                 setUser(request.data.usuario)
                 setLogged(true)
-                router.push("/")
             }
             else{
                 router.push("/login")
