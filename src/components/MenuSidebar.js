@@ -7,7 +7,7 @@ import { AuthContext } from '../context/AuthContext';
 import { GlobalContext } from '../context/GlobalContext'
 
 const MenuSidebar = () => {
-    const {showSidebar, handleDeactiveSidebar} = useContext(GlobalContext)
+    const {app_version, showSidebar, handleDeactiveSidebar} = useContext(GlobalContext)
     const {user, logged, handleLogout} = useContext(AuthContext)
     return (
         <>
@@ -28,7 +28,7 @@ const MenuSidebar = () => {
                         </ListItems>
                     </main>
                     <MenuFooter>
-                        <span className='description-version'>ERINUS | Versão: 0.3beta</span>
+                        <span className='description-version'>ERINUS | Versão: {app_version}</span>
                         <Button onClick={handleLogout} rightIcon={<MdExitToApp />} variant={'solid'} colorScheme="red">Sair</Button>
                     </MenuFooter>
                 </Sidebar>
